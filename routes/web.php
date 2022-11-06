@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +18,11 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-
-// Test database connection
-try {
-    DB::connection()->getPdo();
-} catch (\Exception $e) {
-    die("Could not connect to the database.  Please check your configuration. error:" . $e );
-}
     return view('welcome');
 });
+Route::get('/users/list', [UserController::class, 'list']);
+Route::get('/user/add', [UserController::class, 'add']);
+Route::get('/user/edit/{id}', [UserController::class, 'edit']);
+Route::post('/user/create', [UserController::class, 'create']);
+Route::post('/user/update/{id}', [UserController::class, 'update']);
+Route::post('/user/delete', [UserController::class, 'delete']);
