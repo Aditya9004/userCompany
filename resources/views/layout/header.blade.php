@@ -10,6 +10,7 @@
     
 
     <body>
+        @include('layout.navbar')
         @if (session('status'))
         <div class="alert alert-success">
             {{ session('status') }}
@@ -21,7 +22,7 @@
                 {{ session('error') }}
             </div>
         @endif
-        
+
         @yield('content')
     </body>
 

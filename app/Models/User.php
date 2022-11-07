@@ -18,4 +18,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $guarded = ['id'];
+
+    public function userCompany() {
+        return $this->hasMany(UserCompany::class,'user_id','id');
+    }
 }
